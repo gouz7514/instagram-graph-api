@@ -35,6 +35,16 @@
         });
       }
 
+      function loginWithFacebook() {
+        FB.login(function(response) {
+          console.log(resopnse)
+        }, {
+          scope: "public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,instagram_manage_insights,business_management"
+        })
+
+        checkLoginState()
+      }
+
       function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
         console.log('statusChangeCallback');
         console.log(response);                   // The current login status of the person.
@@ -42,7 +52,7 @@
           testAPI();  
         } else {                                 // Not logged into your webpage or we are unable to tell.
           document.getElementById('status').innerHTML = 'Please log ' +
-            'into this webpage.';
+          'into this webpage.';
         }
       }
 
@@ -59,13 +69,18 @@
   <body>
     <div class="status" id="status"></div>
     <div>
-      <div
+      <!-- <div
         class="fb-login-button"
         data-scope="public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,instagram_manage_insights,business_management"
         data-size="large"
         data-width="500px"
         onlogin="checkLoginState()"
-      ></div>
+      ></div> -->
+      <button
+        onclick="loginWithFacebook()"
+      >
+        페이스북으로 로그인하기
+      </button>
     </div>
   </body>
 </html>
