@@ -47,24 +47,12 @@
       }
 
       function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-        // console.log('Welcome!  Fetching your information.... ');
-        // FB.api('/me', function(response) {
-        //   console.log('Successful login for: ' + response.name);
-        //   document.getElementById('status').innerHTML =
-        //     'Thanks for logging in, ' + response.name + '!';
-        // });
-        FB.login(function(response) {
-          if (response.authResponse) {
-          console.log('Welcome!  Fetching your information.... ');
-          FB.api('/me', function(response) {
-            console.log('Good to see you, ' + response.name + '.');
-          });
-
-          checkLoginState()
-          } else {
-          console.log('User cancelled login or did not fully authorize.');
-          }
-      });
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+          console.log('Successful login for: ' + response.name);
+          document.getElementById('status').innerHTML =
+            'Thanks for logging in, ' + response.name + '!';
+        });
       }
     </script>
   </head>
@@ -76,7 +64,7 @@
         data-scope="public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,instagram_manage_insights,business_management"
         data-size="large"
         data-width="500px"
-        onlogin="testAPI()"
+        onlogin="checkLoginState()"
       ></div>
     </div>
   </body>
