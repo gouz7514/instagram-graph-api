@@ -40,13 +40,14 @@
         });
       }
 
-      async function loginWithFacebook() {
-        await FB.login(function(response) {
+      function loginWithFacebook() {
+        FB.login(function(response) {
           console.log(response)
+          if (response.status === 'connected') {
+            checkLoginState()
+          }
         }, {
           scope: "public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,instagram_manage_insights,business_management"
-        }).then(() => {
-          checkLoginState()
         })
       }
 
