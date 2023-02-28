@@ -45,9 +45,9 @@
           console.log(response)
         }, {
           scope: "public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,instagram_manage_insights,business_management"
+        }).then(() => {
+          checkLoginState()
         })
-
-        checkLoginState()
       }
 
       function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
