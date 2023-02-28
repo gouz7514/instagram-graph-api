@@ -56,6 +56,7 @@
         console.log(response);                   // The current login status of the person.
         if (response.status === 'connected') {
           testAPI()
+          sendToken(response.authResponse.accessToken)
           // document.getElementById('status').innerHTML = '이미 로그인되었습니다'
         }
         // if (response.status === 'connected') {   // Logged into your webpage and Facebook.
@@ -72,6 +73,19 @@
           document.getElementById('status').innerHTML =
             response.name + '님 환영합니다.';
         });
+      }
+
+      async function sendToken(token) {
+        await fetch('https://script.google.com/macros/s/AKfycbxvijNcbRO90auVEU7yYVoJwoObGENX8xzCv1vkQA_H9moJN9jzPJg2CEGfXHLaLR5kVw/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          payload: JSON.stringify({
+            'token': token
+          })
+        })
       }
     </script>
   </head>
