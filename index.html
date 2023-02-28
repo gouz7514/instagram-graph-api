@@ -67,16 +67,17 @@
   <body>
     <div class="status" id="status"></div>
     <div>
-      <fb:login-button
+      <!-- <fb:login-button
+        width="500"
         scope="public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,instagram_manage_insights,business_management"
         onlogin="checkLoginState()">
-      </fb:login-button>
-      <button
-        onclick="loginWithFacebook()"
+      </fb:login-button> -->
+      <div
+        class="fb-login-button"
         data-scope="public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,instagram_manage_insights,business_management"
-      >
-        페이스북으로 로그인하기
-      </button>
+        data-size="large"
+        data-width="500px"
+      ></div>
     </div>
   </body>
 </html>
