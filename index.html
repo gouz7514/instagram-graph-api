@@ -55,28 +55,34 @@
       }
 
       function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-        console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
-          console.log('Successful login for: ' + response.name);
-          document.getElementById('status').innerHTML =
-            'Thanks for logging in, ' + response.name + '!';
-        });
+        // console.log('Welcome!  Fetching your information.... ');
+        // FB.api('/me', function(response) {
+        //   console.log('Successful login for: ' + response.name);
+        //   document.getElementById('status').innerHTML =
+        //     'Thanks for logging in, ' + response.name + '!';
+        // });
+        FB.login(function(response) {
+          if (response.authResponse) {
+          console.log('Welcome!  Fetching your information.... ');
+          FB.api('/me', function(response) {
+            console.log('Good to see you, ' + response.name + '.');
+          });
+          } else {
+          console.log('User cancelled login or did not fully authorize.');
+          }
+      });
       }
     </script>
   </head>
   <body>
     <div class="status" id="status"></div>
     <div>
-      <!-- <fb:login-button
-        width="500"
-        scope="public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,instagram_manage_insights,business_management"
-        onlogin="checkLoginState()">
-      </fb:login-button> -->
       <div
         class="fb-login-button"
         data-scope="public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,instagram_manage_insights,business_management"
         data-size="large"
         data-width="500px"
+        onlogin="checkLoginState()"
       ></div>
     </div>
   </body>
